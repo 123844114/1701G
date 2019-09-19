@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .d{
+      padding: 30px;
+    }
+    .demo1{
+      border: 1px solid red
+    }
+    .demo2{
+      border: 1px solid green
+    }
+    .demo3{
+      border: 1px solid blue
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p><span @click="isShow=true">1111</span><span @click="isShow=false">2222</span></p>
+    <div v-if="isShow">11111</div>
+    <div v-else>22222</div>
+  </div>
+</body>
+
+</html>

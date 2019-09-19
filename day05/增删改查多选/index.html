@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  *{
+    padding: 0;
+    margin: 0;
+    list-style: none
+  }
+  .wrap{
+    width: 500px;
+    margin: 0 auto
+  }
+  .main{
+    margin: 0 auto;
+    width: 300px;
+    height: auto;
+    padding: 30px;
+    border: 1px solid red
+  }
+  .checkico{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #ccc
+  }
+  li{
+    display: flex;
+    justify-content: space-between;
+    line-height: 16px;
+    margin-top: 10px;
+  }
+  p{
+    flex: 1;
+    margin: 0 10px;
+  }
+  .btn{
+    margin-top: 50px;
+    display: flex;
+    
+  }
+  span{
+    cursor: pointer;
+  }
+  .on{
+    background: #2196f3
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    {{bookList}}
+    <div class="wrap">
+        <h1 style="text-align: center">书城列表</h1>
+        <div class="main">
+          <input type="text" placeholder="新增一本书，回车添加" @keyup.enter="pushBookList" v-model="bookname">
+          <ul>
+            <li v-for="(item,index) in bookList">
+              <span class="checkico" :class="{on:item.flag}"  @click="checkedFn(item)"></span>
+              <p>{{item.name}}</p>
+              <span @click="delFn(index)">X</span>
+            </li>
+          </ul>
+          <p>总共{{total}}书，当前选择{{checkNun}}本书</p>
+          <div class="btn">
+              <p><span class="checkico" :class="{on:isCheckAll}" @click="checkAllFn"></span>全选</p>
+              <button @click="delAllChecked">删除选中项</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

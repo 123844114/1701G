@@ -1,0 +1,63 @@
+import Vue from 'vue'
+
+let vm=new Vue({
+  el:'#app',
+  data:{
+    msg:'你好',
+    flag:null
+  },
+  methods:{
+    show(){
+      console.log(123)
+    }
+  },
+  beforeCreate(){
+    console.log("beforeCreate:",this.msg)
+    console.log("beforeCreate:",this.show)
+    console.log("beforeCreate:",this.$el)
+  },
+  created(){
+    //发起axios
+    //loading结束
+    let _this=this
+    setTimeout(()=>{
+      _this.flag=false
+    },6000)
+    console.log("Created:",this.msg)
+    console.log("Created:",this.show)
+    console.log("Created:",this.$el)
+  },
+  beforeMount(){
+    //虚拟dom，数据没有替换
+    console.log("beforeMount:",this.msg)
+    console.log("beforeMount:",this.show)
+    console.log("beforeMount:",this.$el)
+  },
+  mounted(){
+    //$el是渲染好的，真实dom节点，且数据完成替换
+    console.log("mounted:",this.msg)
+    console.log("mounted:",this.show)
+    console.log("mounted:",this.$el)
+  },
+  beforeUpdate(){
+    console.log("beforeUpdate:",this.msg)
+    console.log("beforeUpdate:",this.show)
+    console.log("beforeUpdate:",this.$el)
+  },
+  updated(){
+    console.log("updated:",this.msg)
+    console.log("updated:",this.show)
+    console.log("updated:",this.$el)
+  },
+  beforeDestroy(){
+    console.log("beforeDestroy:",this.msg)
+    console.log("beforeDestroy:",this.show)
+    console.log("beforeDestroy:",this.$el)
+  },
+  destroyed(){
+    console.log("destroyed:",this.msg)
+    console.log("destroyed:",this.show)
+    console.log("destroyed:",this.$el)
+  }
+})
+window.vm=vm
